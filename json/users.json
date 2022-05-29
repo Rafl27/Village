@@ -1,12 +1,47 @@
 [
-{
-    "email": "abc@gmail.com",
-    "senha": "111",
-    "permissao": "user"
-},
-{
-    "email": "eee@gmail.com",
-    "senha": "111",
-    "permissao": "admin"
-}
+    {
+        "cpf": "11122233344",
+        "nome": "Administrador",
+        "telefone": "31988887777",
+        "email": "admin@mail.com",
+        "senha": "admin",
+        "permissao": "admin",
+        "endereco_interno": "N/A"
+    },
+    {
+        "cpf": "33344455566",
+        "nome": "Porteiro",
+        "telefone": "31912123212",
+        "email": "porteiro@mail.com",
+        "senha": "porteiro",
+        "permissao": "portaria",
+        "endereco_interno": "N/A"
+    },
+    {
+        "cpf": "12312312310",
+        "nome": "Usuario 1",
+        "telefone": "31998989098",
+        "email": "user1@mail.com",
+        "senha": "user1",
+        "permissao": "user",
+        "endereco_interno": "Bloco C - apto 401"
+    },
+    {
+        "cpf": "87678678619",
+        "nome": "Usuario 2",
+        "telefone": "31945654567",
+        "email": "user2@mail.com",
+        "senha": "user2",
+        "permissao": "user",
+        "endereco_interno": "Bloco E - apto 101"
+    },
+    {
+        "cpf": "56789098767",
+        "nome": "Usuario 3",
+        "telefone": "31984345486",
+        "email": "user3@mail.com",
+        "senha": "user3",
+        "permissao": "user",
+        "endereco_interno": "Bloco E - apto 101"
+    }
 ]

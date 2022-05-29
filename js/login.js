@@ -1,4 +1,6 @@
 var btn = document.getElementById('submit');
+var alerta = document.getElementById("alerta")
+
 usuarios = {};
 
 fetch("../json/users.json")
@@ -14,11 +16,12 @@ btn.addEventListener('click', func);
 function func() {
     var login = document.getElementById("inputEmail").value
     var senha = document.getElementById("inputPassword").value
-
     var encontrou = false;
+    retorno = {};
 
     for (var i = 0; i < usuarios.length; i++) {
         if (usuarios[i]["email"] == login && usuarios[i]["senha"] == senha) {
+            retorno = usuarios[i]            
             encontrou = true;
             break;
         } else {
@@ -27,8 +30,15 @@ function func() {
     }
 
     if(encontrou){
-        console.log("Login e senha OK");
+        localStorage.setItem('loggedUser', JSON.stringify(retorno))
+        //console.log(retorno["permissao"]);
+        //setTimeout(function(){
+        //    window.location.href = 'https://www.google.com';
+        // }, 500);
     }else{
-        console.log("Login ou senha incorretos");
+        $('#alerta').css("visibility", "visible");
+        setTimeout(function(){
+            $('#alerta').css("visibility", "hidden");
+        }, 3000);       
     }
 }
