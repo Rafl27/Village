@@ -177,3 +177,12 @@ a.article:hover {
 #options {
     height: 20px;
 }
+
+.pdf-icon{
+    height: 25px;
+    margin-left: 90%;
+}
+
+.table {
+    text-align: center;
+}
