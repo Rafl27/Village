@@ -1,8 +1,7 @@
-
 //Mascara para formulario de cadastro
-$(document).ready(function(){
+$(document).ready(function () {
     $('#telefone').mask('(00)00000-0000');
-  });
+});
 
 var tbodyRef = document.getElementById('tabela').getElementsByTagName('tbody')[0];
 
@@ -12,13 +11,12 @@ fetch("../json/visitantes.json")
     .then(mockResponses => mockResponses.json())
     .then(data => {
         visitantes = data;
-        func();
+        preencheTabelaVisitantes();
     });
 
-async function func() {
+async function preencheTabelaVisitantes() {
 
     for (var i = 0; i < visitantes.length; i++) {
-
         var nome = visitantes[i]["nome"];
         var telefone = visitantes[i]["telefone"];
         var email = visitantes[i]["email"];
@@ -51,18 +49,53 @@ async function func() {
         deleteIcon.setAttribute('class', 'teste fas fa-trash');
         deleteIcon.setAttribute('href', '#');
         deleteIcon.setAttribute('excluirUser', visitantes[i]["email"]);
-        
+
         newCell.appendChild(deleteIcon);
     }
 }
 
+//Listener para cada um dos icones de excluir, identificados por seu respectivo usuario (email)
+document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('click', function (e) {
+        if (e.target.tagName == "A" && e.target.className == "teste fas fa-trash") {
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.addEventListener('click', function(e){
-        if(e.target.tagName=="A"){
-            var image = e.target.getAttribute("excluirUser");
-            alert(image);
+            var user = e.target.getAttribute("excluirUser");
+
+            //Listener para alterar o texto no modal de confirmação de acordo com o email do usuario clicado
+            $('#modalConfirmacao').on('show.bs.modal', function (e) {
+                var bookId = user
+                $(e.currentTarget).find('span[id="nomeToRemove"]').text(bookId);
+            });
+            $('#modalConfirmacao').modal('show');
         }
-      })
- }, false);
+    })
+}, false);
+
+
+function teste() {
+    var email = document.getElementById('nomeToRemove').innerText;
+    //console.log('Email a deletar: ' + email);
+    var usuarioLogado = JSON.parse(localStorage.getItem('loggedUser'));
+    //console.log('Email Usuario logado => ' + usuarioLogado['email']);
+
+    visitantes = {};
+
+    fetch("../json/visitantes.json")
+        .then(mockResponses => {
+            return mockResponses.json();
+        })
+        .then(function (data) {
+            visitantes = data;
+        })
+        .then(function () {
+            for (var i = 0; i < visitantes.length; i++) {
+                if (visitantes[i]['email'] == email) {
+                    if (visitantes[i]['email_criador'] == usuarioLogado['email']) {
+                        //console.log('Visitante ' + visitantes[i]['nome'] + ' foi criado pelo email' + usuarioLogado['email']);
+
+                    }
+                }
+            }
+        });
+}
 
