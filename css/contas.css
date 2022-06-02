@@ -181,6 +181,7 @@ a.article:hover {
 .pdf-icon{
     height: 25px;
     margin-left: 90%;
+    /* padding-bottom: 20px; */
 }
 
 .table {
