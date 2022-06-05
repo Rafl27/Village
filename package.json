@@ -1,23 +1,19 @@
 {
-  "name": "village_final",
+  "name": "restfulapiexpressmongo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jeancarlos94/Village_Final.git"
+    "start": "nodemon ./index.js local host 3000"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jeancarlos94/Village_Final/issues"
-  },
-  "homepage": "https://github.com/jeancarlos94/Village_Final#readme",
   "dependencies": {
-    "popper.js": "^1.12.3"
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.4",
+    "nodemon": "^2.0.16"
   }
 }
