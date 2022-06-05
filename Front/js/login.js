@@ -6,6 +6,7 @@ Usuarios = {}
 function func() {
     var login = document.getElementById("inputEmail").value
     var senha = document.getElementById("inputPassword").value
+    console.log(Usuarios)
     console.log(achaUsuarios(Usuarios, login, senha));
     var retorno = achaUsuarios(Usuarios, login, senha);
     if (retorno == "Usuario ou senha invalida!") {
