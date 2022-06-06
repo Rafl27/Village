@@ -7,11 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="./css/bootstrap.min.css" />
-  <link rel="stylesheet" href="./css/sideBar.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/sideBar.css">
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
-  <link rel="stylesheet" href="./css/visitas.css">
+  <link rel="stylesheet" href="../css/visitantes.css">
+  <link rel="stylesheet" href="../css/visitas.css">
   <script src="https://kit.fontawesome.com/cc24744fcf.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
   <title>Village - visitas</title>
 </head>
@@ -21,7 +26,7 @@
     <!-- Sidebar  -->
     <nav id="sidebar">
       <div class="sidebar-header">
-        <img src="./images/village-logos_black.png" id="village-logo" alt="" srcset="">
+        <img src="../images/village-logos_black.png" id="village-logo" alt="" srcset="">
       </div>
 
       <ul class="list-unstyled components">
@@ -64,25 +69,7 @@
         <li>
           <a href="#">Perfil</a>
         </li>
-
       </ul>
-
-      <!-- <ul class="list-unstyled CTAs">
-          <li>
-            <a
-              href="https://bootstrapious.com/tutorial/files/sidebar.zip"
-              class="download"
-              >Download source</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://bootstrapious.com/p/bootstrap-sidebar"
-              class="article"
-              >Back to article</a
-            >
-          </li>
-        </ul> -->
     </nav>
 
     <!-- Page Content  -->
@@ -103,12 +90,12 @@
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item active">
                 <a class="nav-link" href="#">
-                  <img src="./images/211694_bell_icon.png" id="bell" alt="" srcset="">
+                  <img src="../images/211694_bell_icon.png" id="bell" alt="" srcset="">
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <img src="./images/9004778_menu_list_navigation_options_icon.png" id="options" alt="" srcset="">
+                  <img src="../images/9004778_menu_list_navigation_options_icon.png" id="options" alt="" srcset="">
                 </a>
               </li>
 
@@ -117,140 +104,215 @@
         </div>
       </nav>
 
-      <div class="container rounded bg-white mt-5 mb-5">
-        <div class="row">
-          <div class="col-md-6 border-right">
-            <div class="p-3 py-5">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-right">Registrar nova visita</h4>
-              </div>
 
-              <div class="row mt-2">
-                <div class="col-md-6"><label class="labels">Nome</label><input type="text" class="form-control"
-                    placeholder="Nome" value=""></div>
-                <div class="col-md-6"><label class="labels">Sobrenome</label><input type="text" class="form-control"
-                    value="" placeholder="Sobrenome"></div>
-              </div>
+      <div class="container-fluid">
+        <div class="accordion" id="accordionExample">
 
-              <div class="row mt-3">
-                <div class="col-md-12"><label class="labels">Númedo de telefone</label>
-                  <input type="text"class="form-control" placeholder="Númedo de telefone" value="">
+
+          <!-- Opção visitantes -->
+          <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true">
+              <span class="title px-3">Minha lista de visitantes</span>
+              <span class="accicon"><i class="fas fa-angle-down rotate-icon"></i></span>
+            </div>
+            <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="container-fluid rounded bg-white mb-5">
+                  <div class="row">
+                    <div class="col p-3">
+                      <div class="d-flex justify-content-between align-items-center mb-5">
+                        <button id="teste" class="btn btn-success" type="button" data-toggle="modal"
+                          data-target="#modalCadastro">
+                          <span class="fas fa-plus">&nbsp;&nbsp;Novo(a) visitante</span>
+                        </button>
+                      </div>
+
+                      <div style="overflow: auto; max-height: 300px;">
+                        <table id="tabela" class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">Nome</th>
+                              <th scope="col">Telefone</th>
+                              <th scope="col">Email</th>
+                              <th scope="col">Ações</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <!--Generated by script visitantes.js-->
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div class="row justify-content-center">
+                      </div>
+                    </div>
+
+                    <!-- Modal Cadastro-->
+                    <div class="modal fade" id="modalCadastro" tabindex="-1" aria-labelledby="modalCadastroLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="modalCadastroLabel">Cadastro de visitante</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+
+                            <form>
+                              <div class="form-group" style="width: 450px;">
+                                <input type="text" class="form-control" id="nome" placeholder="Nome do visitante"
+                                  required minlength="4" maxlength="40">
+                              </div>
+                              <div class="form-group" style="width: 350px;">
+                                <input type="email" class="form-control" id="email" placeholder="Email do visitante"
+                                  required minlength="5" maxlength="30">
+                              </div>
+                              <div class="form-group" style="width: 250px;">
+                                <input type="text" class="form-control" id="telefone"
+                                  placeholder="Telefone do visitante" required minlength="10" maxlength="15">
+                              </div>
+                              <div class="row ml-1">
+                                <small>* Todos os campos são de preenchimento <strong>obrigatório.</strong></small>
+                              </div>
+                              <div class="text-right mt-5">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                <button id="confirmaCadastro" class="btn btn-success">Confirmar</button>
+                              </div>
+                            </form>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Modal Exclusao-->
+                    <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-body">
+
+                            <form>
+                              <div class="container mt-2 text-center">
+                                <span>Tem certeza que deseja excluir</span>
+                                <strong><span id="nomeToRemove"></span></strong>
+                                <span id="idToRemove" hidden></span>
+                              </div>
+                              <div class="text-center mt-3">
+                                <button type="button" class="btn btn-secondary mx-3"
+                                  data-dismiss="modal">Voltar</button>
+                                <button id="confirmaExclusao" class="btn btn-danger">Confirmar</button>
+                              </div>
+                              <div class="text-center mt-3">
+                                <small class="px-2"
+                                  style="color: #FFF ;background-color: #d9534f; border-radius: 5px;">* Esta ação não
+                                  poderá ser desfeita</small>
+                              </div>
+
+                            </form>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Modal Edição-->
+                    <div class="modal fade" id="modalEdicao" tabindex="-1" aria-labelledby="modalCadastroLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="modalEdicaoLabel">Edição de visitante</h5>
+                            <span id="edit_user_id" hidden></span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+                              <div class="form-group" style="width: 450px;">
+                                <input type="text" class="form-control" id="edit_nome" placeholder="Nome do visitante"
+                                  required minlength="4" maxlength="40">
+                              </div>
+
+                              <div class="form-group" style="width: 350px;">
+                                <input type="email" class="form-control" id="edit_email"
+                                  placeholder="Email do visitante" required minlength="5" maxlength="30">
+                              </div>
+
+                              <div class="form-group" style="width: 250px;">
+                                <input type="text" class="form-control" id="edit_telefone"
+                                  placeholder="Telefone do visitante" required minlength="14" maxlength="14">
+                              </div>
+
+                              <div class="row ml-1">
+                                <small>* Todos os campos são de preenchimento <strong>obrigatório.</strong></small>
+                              </div>
+
+                              <div class="text-right mt-5">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                <button id="confirmaEdicao" class="btn btn-success">Confirmar</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
-                
-                  <div class="col-md-12">
-                    <label class="labels">E-mail</label><input type="text" class="form-control" placeholder="E-mail" value="">
-                  </div>               
               </div>
-
-              <div class="row mt-3">
-                <div class="col-md-6"><label class="labels">Idade</label><input type="text" class="form-control"
-                    placeholder="Idade" value=""></div>
-                <div class="col-md-6"><label class="labels">Situação</label><input type="text" class="form-control"
-                    value="" placeholder="Situação"></div>
-              </div>
-
-              <div class="mt-5 text-center">
-                <button class="btn btn btn-dark profile-button" type="button">Editar</button>
-              </div>
-
             </div>
           </div>
+          <!-- Fim Opção visitantes -->
 
-          <div class="col-md-6">
-            <div class="p-3 py-5">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-right">Meus visitantes</h4>
-              </div>
-              
-              <div style="overflow: auto; height: 300px;">
-             
-              <table id="tabela" class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Ações</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!--Generated by script visitantes.js-->
-                </tbody>
-              </table>
-              </div>
-
+          <!-- Opção visitas -->
+          <div class="card">
+            <div class="card-header collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+              aria-controls="collapseTwo">
+              <span class="title px-3">Minhas visitas</span>
+              <span class="accicon"><i class="fas fa-angle-down rotate-icon"></i></span>
             </div>
+            <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="container-fluid rounded bg-white mb-5">
+                  <div class="row">
 
-            <div class="row justify-content-center">
-              <button id="teste" class="btn btn-dark profile-button" type="button" data-toggle="modal" data-target="#modalCadastro">Cadastrar visitante</button>
-            </div>
-          </div>
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-6">
 
 
-          <!-- Modal Cadastro-->
-          <div class="modal fade" id="modalCadastro" tabindex="-1" aria-labelledby="modalCadastroLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="modalCadastroLabel">Cadastro de visitante</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+
+                        </div>
+
+
+                        <!-- <div class="col">
+                        Col 2
+                      </div> -->
+
+
+                      </div>
+
+                    </div>
+
+                  </div>
                 </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group" style="width: 300px;">
-                      <input type="text" class="form-control" id="nome" placeholder="Nome do visitante" required>                    
-                    </div>
-
-                    <div class="form-group" style="width: 300px;">
-                      <input type="email" class="form-control" id="email" placeholder="Email do visitante" required>
-                    </div>
-                    
-                    <div class="form-group" style="width: 200px;">
-                      <input type="text" class="form-control" id="telefone" placeholder="Telefone do visitante" required>
-                    </div>
-
-                    <div class="row ml-1">
-                      <small>* Todos os campos são de preenchimento obrigatório</small>
-                    </div>
-                                        
-                    <div class="text-right mt-5">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
-                      <button type="submit" class="btn btn-success">Confirmar</button>
-                    </div>
-
-                    
-                  </form>
-                </div>         
               </div>
             </div>
           </div>
-
-          <!-- Modal Exclusao-->
-          <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-body">
-                  
-                  <form>
-                    <div class="container mb-5 mt-2">
-                      <span>Tem certeza que deseja excluir</span>
-                      <strong><span id="nomeToRemove"></span></strong> 
-                    </div>                    
-                    <div class="text-center">
-                      <button type="button" class="btn btn-secondary mx-5" data-dismiss="modal">Voltar</button>
-                      <button id="confirmaExclusao" onclick="teste()" type="submit" class="btn btn-danger">Confirmar</button>
-                    </div>                                      
-                  </form>
-                </div>         
-              </div>
-            </div>
-          </div>
+          <!-- Fim Opção visitas -->
 
 
         </div>
       </div>
+
+
+
+
+
     </div>
   </div>
 
@@ -258,15 +320,10 @@
   </div>
 
   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-  <script src="./js/bootstrap.bundle.min.js"></script>
-  <script src="./js/sideBar.js"></script>
-  <script src="js/visitantes.js"></script>
-
-
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/sideBar.js"></script>
+  <script src="../js/visitas.js"></script>
+  <script src="../js/visitantes.js"></script>
 </body>
 
 </html>
