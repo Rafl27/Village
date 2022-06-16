@@ -56,7 +56,7 @@
             </ul>
           </li>
           <li>
-            <a href="#">Visitas</a>
+            <a href="visitas.html">Visitas e Visitantes</a>
           </li>
           <li>
             <a
@@ -84,7 +84,17 @@
           <li>
             <a href="profile.html">Perfil</a>
           </li>
+          <li class="logout">
+            <a href="#" onclick="logout()">Desconectar-se</a>
+          </li>
         </ul>
+
+        <script type="text/javascript">
+          function logout(){
+            localStorage.removeItem('loggedUser');
+            window.location.href = "http://localhost:3000/html";
+          }
+        </script>
 
         <!-- <ul class="list-unstyled CTAs">
           <li>
@@ -108,21 +118,6 @@
       <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-              <i class="fas fa-align-left"></i>
-              <span>Mostrar Sidebar</span>
-            </button>
-            <button
-              class="btn btn-dark d-inline-block d-lg-none ml-auto"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i class="fas fa-align-justify"></i>
-            </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav navbar-nav ml-auto">

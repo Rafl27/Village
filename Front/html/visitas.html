@@ -47,7 +47,7 @@
           </ul>
         </li>
         <li>
-          <a href="visitas.html">Visitas</a>
+          <a href="visitas.html">Visitas e Visitantes</a>
         </li>
         <li>
           <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Contas</a>
@@ -69,22 +69,23 @@
         <li>
           <a href="#">Perfil</a>
         </li>
+        <li class="logout">
+          <a href="#" onclick="logout()">Desconectar-se</a>
+        </li>
       </ul>
     </nav>
+
+    <script type="text/javascript">
+      function logout(){
+        localStorage.removeItem('loggedUser');
+        window.location.href = "http://localhost:3000/html";
+      }
+    </script>
 
     <!-- Page Content  -->
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <button type="button" id="sidebarCollapse" class="btn btn-black">
-            <i class="fas fa-align-left"></i>
-            <span>Mostrar Sidebar</span>
-          </button>
-          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <i class="fas fa-align-justify"></i>
-          </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">

@@ -78,3 +78,8 @@ a.fa-pencil{
 .card-header:not(.collapsed) .rotate-icon {
   transform: rotate(180deg);
 }
+
+.logout{
+    padding-top: 90%;
+    color: red;
+}

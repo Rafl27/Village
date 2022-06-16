@@ -177,3 +177,8 @@ a.article:hover {
 #options {
     height: 20px;
 }
+
+.logout{
+    padding-top: 90%;
+    color: red;
+}
