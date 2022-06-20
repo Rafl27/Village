@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const usuarios = require('../models/usuario');
+const Reserva = require('../models/reserva');
 // const usuario = require('../models/usuario');
 router.use(express.json());
 
@@ -77,5 +78,25 @@ router.patch('/:postId', async (req, res) => {
         res.json({ message: err });
     }
 });
+
+router.post('/reserva', async (req, res) => {
+    const data = req.body;
+    const reserva = new Reserva({
+        data: data.data,
+        nome: data.nome,
+        numeroDePessoas: data.numeroDePessoas,
+        email: data.email
+    });
+
+    console.log(reserva)
+    //try {
+    //    const usuarioSalvo = await reserva.save();
+    //    res.json(usuarioSalvo); 
+    //}
+    //catch (err) {
+    //    res.json({ message: err });
+    //    console.log('error!!!' +  err)
+    //}
+})
 
 module.exports = router;

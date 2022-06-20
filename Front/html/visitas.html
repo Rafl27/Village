@@ -32,17 +32,23 @@
       <ul class="list-unstyled components">
         <p>Village Menu</p>
         <li class="active">
-          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Reserva de
-            áreas</a>
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Reserva
+            de áreas</a>
           <ul class="collapse list-unstyled" id="homeSubmenu">
             <li>
-              <a href="#">Área de churrasco</a>
+              <a href="areaReservation.html">Todas as áreas</a>
             </li>
             <li>
-              <a href="#">Piscina - Família</a>
+              <a href="reserva.html?area=areaChurrasco">Área de churrasco</a>
             </li>
             <li>
-              <a href="#">Área de eventos</a>
+              <a href="reserva.html?area=areaPiscina">Piscina - Família</a>
+            </li>
+            <li>
+              <a href="reserva.html?area=areaEventos">Área de eventos</a>
+            </li>
+            <li>
+              <a href="reserva.html?area=areaTenis">Quadra de tênis</a>
             </li>
           </ul>
         </li>
@@ -76,7 +82,7 @@
     </nav>
 
     <script type="text/javascript">
-      function logout(){
+      function logout() {
         localStorage.removeItem('loggedUser');
         window.location.href = "http://localhost:3000/html";
       }

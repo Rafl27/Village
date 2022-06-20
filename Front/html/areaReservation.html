@@ -29,19 +29,13 @@
                         de áreas</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="areaReservation.html">Todas as áreas</a>
+                            <a href="#">Área de churrasco</a>
                         </li>
                         <li>
-                            <a href="reserva.html?area=areaChurrasco">Área de churrasco</a>
+                            <a href="#">Piscina - Família</a>
                         </li>
                         <li>
-                            <a href="reserva.html?area=areaPiscina">Piscina - Família</a>
-                        </li>
-                        <li>
-                            <a href="reserva.html?area=areaEventos">Área de eventos</a>
-                        </li>
-                        <li>
-                            <a href="reserva.html?area=areaTenis">Quadra de tênis</a>
+                            <a href="#">Área de eventos</a>
                         </li>
                     </ul>
                 </li>
@@ -104,35 +98,41 @@
                 </div>
             </nav>
 
-            <h2 id="area">Reserva - </h2>
+            <h2>Reserva de áreas</h2>
             <div class="container rounded" class="reservas">
-                <div class="row">
-                    <div class="col">
-                        <input id="data" type="date">
+                <div class="row justify-content-around mb-5">
+                    <div id="areaChurrasco" class="col-md-4 border p-4 bg-white" >
+                        <div class="row justify-content-center">
+                            <img class="square" width="150px" src="../images/areaChurrasco.png">
+                        </div>
+                        <div class="row justify-content-center">
+                            <span class="font-weight-bold mt-3"><a href="#">Área de churrasco</a></span>
+                        </div>
                     </div>
-                    <div class="col">
-                        <div class="row">
-                            <div class="col">
-                                <div class="row">
-                                    <span>Nome</span>
-                                </div>
-                                <div class="row">
-                                    <input id="nome" type="text">
-                                </div>
-                            </div>
+                    <div id="areaPiscina" class="col-md-4 border p-4 bg-white">
+                        <div class="row justify-content-center">
+                            <img class="square" width="150px" src="../images/piscina.png">
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="row">
-                                    <span>N° de pessoas</span>
-                                </div>
-                                <div class="row">
-                                    <input id="numpessoas" type="number" onload="">
-                                </div>
-                            </div>
+                        <div class="row justify-content-center">
+                            <span class="font-weight-bold mt-3"><a href="#">Piscina - Família</a></span>
                         </div>
-                        <div class="row">
-                            <button id="submit">Salvar</button>
+                    </div>
+                </div>
+                <div class="row justify-content-around">
+                    <div id="areaEventos" class="col-md-4 border p-4 bg-white">
+                        <div class="row justify-content-center">
+                            <img class="square" width="150px" src="../images/eventos.png">
+                        </div>
+                        <div class="row justify-content-center">
+                            <span class="font-weight-bold mt-3"><a href="#">Área de Eventos</a></span>
+                        </div>
+                    </div>
+                    <div id="areaTenis" class="col-md-4 border p-4 bg-white">
+                        <div class="row justify-content-center">
+                            <img class="square" width="150px" src="../images/tenis.png">
+                        </div>
+                        <div class="row justify-content-center">
+                            <span class="font-weight-bold mt-3"><a href="#">Quadra de tênis</a></span>
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
         crossorigin="anonymous"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/sideBar.js"></script>
-    <script src="../js/reserva.js"></script>
+    <script src="../js/areaReservation.js"></script>v
 
 </body>
 
