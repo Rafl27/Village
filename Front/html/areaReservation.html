@@ -19,7 +19,8 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <img src="../images/village-logos_black.png" id="village-logo" alt="" srcset="">
+                <a href="sidebar.html"><img src="../images/village-logos_black.png" id="village-logo" alt=""
+                        srcset="" /></a>
             </div>
 
             <ul class="list-unstyled components">
@@ -29,21 +30,27 @@
                         de áreas</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Área de churrasco</a>
+                            <a href="areaReservation.html">Todas as áreas</a>
                         </li>
                         <li>
-                            <a href="#">Piscina - Família</a>
+                            <a href="reserva.html?area=areaChurrasco">Área de churrasco</a>
                         </li>
                         <li>
-                            <a href="#">Área de eventos</a>
+                            <a href="reserva.html?area=areaPiscina">Piscina - Família</a>
+                        </li>
+                        <li>
+                            <a href="reserva.html?area=areaEventos">Área de eventos</a>
+                        </li>
+                        <li>
+                            <a href="reserva.html?area=areaTenis">Quadra de tênis</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Visitas</a>
+                    <a href="visitas.html">Visitas e Visitantes</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                    <a href="visitas.html" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle">Contas</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
@@ -58,13 +65,39 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Solicitação de serviço</a>
+                    <a href="solicitacao.html">Solicitação de serviço</a>
                 </li>
                 <li>
-                    <a href="#">Perfil</a>
+                    <a href="profile.html">Perfil</a>
                 </li>
-
+                <li class="logout">
+                    <a href="#" onclick="logout()">Desconectar-se</a>
+                </li>
             </ul>
+
+            <script type="text/javascript">
+                function logout() {
+                    localStorage.removeItem('loggedUser');
+                    window.location.href = "http://localhost:3000/html";
+                }
+            </script>
+
+            <!-- <ul class="list-unstyled CTAs">
+                  <li>
+                    <a
+                      href="https://bootstrapious.com/tutorial/files/sidebar.zip"
+                      class="download"
+                      >Download source</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://bootstrapious.com/p/bootstrap-sidebar"
+                      class="article"
+                      >Back to article</a
+                    >
+                  </li>
+                </ul> -->
         </nav>
 
         <!-- Page Content  -->
@@ -101,7 +134,7 @@
             <h2>Reserva de áreas</h2>
             <div class="container rounded" class="reservas">
                 <div class="row justify-content-around mb-5">
-                    <div id="areaChurrasco" class="col-md-4 border p-4 bg-white" >
+                    <div id="areaChurrasco" class="col-md-4 border p-4 bg-white">
                         <div class="row justify-content-center">
                             <img class="square" width="150px" src="../images/areaChurrasco.png">
                         </div>
