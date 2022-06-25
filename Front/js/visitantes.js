@@ -76,6 +76,36 @@ async function carregarListaVisitantes() {
                 newCell.appendChild(deleteIcon);
             }
         });
+
+        //Listener para cada um dos icones de excluir, identificados por seu respectivo usuario (email)
+        setTimeout(() => {
+            var elementsTrash = document.querySelectorAll('.fa-trash');
+            var elementsPencil = document.querySelectorAll('.fa-pencil');
+
+            elementsPencil.forEach(element => {
+                element.addEventListener('click', function handleClick(e) {
+                    const userId = e.target.getAttribute("edit_user_id");
+                    $('#modalEdicao').on('show.bs.modal', function (e) {
+                        $(e.currentTarget).find('span[id="edit_user_id"]').text(userId);
+                    });
+                    $('#modalEdicao').modal('show');
+                })
+            });
+
+            elementsTrash.forEach(element => {
+                element.addEventListener('click', function handleClick(e) {
+                    const userName = e.target.getAttribute("delete_user_name");
+                    const userId = e.target.getAttribute("delete_user_id");
+                    //Listener para alterar o texto no modal de confirmação de acordo com o email do usuario clicado
+                    $('#modalConfirmacao').on('show.bs.modal', function (e) {
+                        $(e.currentTarget).find('span[id="nomeToRemove"]').text(userName);
+                        $(e.currentTarget).find('span[id="idToRemove"]').text(userId);
+                    });
+                    $('#modalConfirmacao').modal('show');
+                })
+            });
+        }, 500);
+
     }).catch(function (err) {
         console.error('Falha ao obter os dados de visitantes', err);
     });
@@ -136,32 +166,6 @@ function editVisitanteHandler() {
 window.addEventListener('load', function () {
     carregarListaVisitantes();
 });
-
-//Listener para cada um dos icones de excluir, identificados por seu respectivo usuario (email)
-document.addEventListener('DOMContentLoaded', function () {
-    document.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (e.target.tagName == "A" && e.target.className == "teste fas fa-trash") {
-            const userName = e.target.getAttribute("delete_user_name");
-            const userId = e.target.getAttribute("delete_user_id");
-            //Listener para alterar o texto no modal de confirmação de acordo com o email do usuario clicado
-            $('#modalConfirmacao').on('show.bs.modal', function (e) {
-                $(e.currentTarget).find('span[id="nomeToRemove"]').text(userName);
-                $(e.currentTarget).find('span[id="idToRemove"]').text(userId);
-            });
-            $('#modalConfirmacao').modal('show');
-        }
-
-        if (e.target.tagName == "A" && e.target.className == "teste fa fa-pencil") {
-            const userId = e.target.getAttribute("edit_user_id");
-
-            $('#modalEdicao').on('show.bs.modal', function (e) {
-                $(e.currentTarget).find('span[id="edit_user_id"]').text(userId);
-            });
-            $('#modalEdicao').modal('show');
-        }
-    })
-}, false);
 
 //Confirmação do modal, se confirmar vai chamar o endpoint de exclusao enviando o id do registro a excluir
 btnConfirmaExclusao.addEventListener('click', function (e) {

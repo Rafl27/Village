@@ -51,6 +51,10 @@ a.fa-trash{
     color: red;
 }
 
+a.fa-times{
+    color: red;
+}
+
 a.fa-pencil{
     color: green;
 }
@@ -83,3 +87,4 @@ a.fa-pencil{
     padding-top: 90%;
     color: red;
 }
+

@@ -9,14 +9,19 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="../css/bootstrap.min.css" />
   <link rel="stylesheet" href="../css/sideBar.css">
-  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
   <link rel="stylesheet" href="../css/visitantes.css">
-  <link rel="stylesheet" href="../css/visitas.css">
-  <script src="https://kit.fontawesome.com/cc24744fcf.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
+  <script src="https://kit.fontawesome.com/cc24744fcf.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+  <!--  Flatpickr  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css">
+
+  <script type="text/javascript" src="../js/visitas.js"></script>
 
   <title>Village - visitas</title>
 </head>
@@ -93,6 +98,13 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
 
+          <div id="visitaError" class="alert alert-danger alert-dismissible fade" role="alert">
+            <strong>Verifique os dados da visita.</strong> Você deve preencher um dia/hora e ao menos um visitante.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item active">
@@ -111,15 +123,13 @@
         </div>
       </nav>
 
-
       <div class="container-fluid">
         <div class="accordion" id="accordionExample">
-
 
           <!-- Opção visitantes -->
           <div class="card">
             <div class="card-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true">
-              <span class="title px-3">Minha lista de visitantes</span>
+              <span class="title px-3">Gerenciar minha lista de visitantes</span>
               <span class="accicon"><i class="fas fa-angle-down rotate-icon"></i></span>
             </div>
             <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
@@ -200,7 +210,6 @@
                       <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                           <div class="modal-body">
-
                             <form>
                               <div class="container mt-2 text-center">
                                 <span>Tem certeza que deseja excluir</span>
@@ -217,9 +226,7 @@
                                   style="color: #FFF ;background-color: #d9534f; border-radius: 5px;">* Esta ação não
                                   poderá ser desfeita</small>
                               </div>
-
                             </form>
-
                           </div>
                         </div>
                       </div>
@@ -279,57 +286,194 @@
           <div class="card">
             <div class="card-header collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
               aria-controls="collapseTwo">
-              <span class="title px-3">Minhas visitas</span>
+              <span class="title px-3">Gerenciar minhas visitas</span>
               <span class="accicon"><i class="fas fa-angle-down rotate-icon"></i></span>
             </div>
             <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
               <div class="card-body">
                 <div class="container-fluid rounded bg-white mb-5">
                   <div class="row">
-
                     <div class="container-fluid">
-                      <div class="row">
-                        <div class="col-6">
+                      <div class="container-fluid mb-4">
+                        <div class="row">
 
-
-
+                          <!-- Calendário -->
+                          <div class="flatpickr my-3 offset-md-0">
+                            <span class="px-5"
+                              style="background-color: rgba(182, 181, 181, 0.264); border-radius: 10px; padding: 5px; margin-right: 10px;">Informe
+                              a data e hora da visita</span>
+                            <input class="text-center" style="height: 35px; border-radius: 15px;" type="text"
+                              id="basicDate" placeholder="Exibir o calendário" data-input>
+                            <a class="input-button" title="toggle" data-toggle>
+                            </a>
+                          </div>
                         </div>
-
-
-                        <!-- <div class="col">
-                        Col 2
-                      </div> -->
-
-
                       </div>
 
-                    </div>
+                      <!-- Modal Exclusao-->
+                      <div class="modal fade" id="modalExcluirVisita" tabindex="-1" aria-labelledby="modalExcluirVisita"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <form>
+                                <div class="container mt-2 text-center">
+                                  <span>Tem certeza que deseja excluir a visita ?</span>
+                                  <span id="idVisitaRemove" hidden></span>
+                                </div>
+                                <div class="text-center mt-3">
+                                  <button type="button" class="btn btn-secondary mx-3"
+                                    data-dismiss="modal">Voltar</button>
+                                  <button id="confirmaExclusaoVisita" class="btn btn-danger">Confirmar</button>
+                                </div>
+                                <div class="text-center mt-3">
+                                  <small class="px-2"
+                                    style="color: #FFF ;background-color: #d9534f; border-radius: 5px;">* Esta ação não
+                                    poderá ser desfeita</small>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
+                      <div class="row d-flex text-center">
+                        <span class="px-5"
+                          style="margin-left: 18px; background-color: rgba(182, 181, 181,  0.264); border-radius: 10px; padding: 5px;">
+                          Abaixo você seleciona os visitantes que vão fazer parte da visita
+                        </span>
+                        <span class="offset-md-3 px-5"
+                          style="background-color: rgba(182, 181, 181,  0.264); border-radius: 10px; padding: 5px;">
+                          Visitas agendadas
+                        </span>
+                      </div>
+                      <hr>
+                      <div class="row" style="min-height: 200px;">
+                        <div class="col-6">
+
+                          <!-- Lista de visitantes para seleção -->
+                          <div class="offset-md-0" id="meusVisitantes"
+                            style="width: 90%; overflow-y: scroll; height: 100%; padding: 5px 20px; top: 0px;  position: absolute;">
+                            <!-- Lista carregada por JS e também com listener de card shown para atualizá-la -->
+                            <script>
+                              document.addEventListener('DOMContentLoaded', function () {
+                                carregarLista();
+                              })
+                            </script>
+                          </div>
+                        </div>
+
+                        <div class="col-6 text-center">
+                          <div style="overflow: auto; max-height: 300px;">
+                            <table id="tabelaVisitas" class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Data/Hora</th>
+                                  <th scope="col">Participantes</th>
+                                  <th scope="col">Excluir</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <script>
+                                  renderizarTabelaVisitas()
+                                </script>
+                                <!--Generated by script visitas.js-->
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="container-fluid">
+                    <div class="row">
+                      <input class="btn btn-success mt-3" style="width: 150px;  border-radius: 50px;" type="button"
+                        id="save_visita" value="Salvar visita" />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <!-- Fim Opção visitas -->
-
-
         </div>
       </div>
-
-
-
-
-
     </div>
   </div>
+  </div>
+  </div>
 
-  </div>
-  </div>
+  <!-- Calendário -->
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#basicDate").flatpickr({
+        locale: "pt",
+        enableTime: true,
+        dateFormat: "d/m/Y H:i",
+        minDate: "today",
+        time_24hr: true
+      });
+    });
+
+  </script>
+
+  <script>
+    //Listener para quando clicar na setinha de Minhas Visitas, ou na barra do título carregar os dados dos visitantes 
+    $('#collapseTwo').on('shown.bs.collapse', function () {
+      carregarLista();
+    })
+
+    function carregarLista() {
+      $('#meusVisitantes').empty();
+      const meusVisitantes = document.getElementById('meusVisitantes');
+
+      loadVisitantes().then(res => {
+        res.forEach(element => {
+
+          const div = document.createElement('div');
+          const input = document.createElement('input');
+          const segundaDiv = document.createElement('div');
+          const icone = document.createElement('i');
+          const label = document.createElement('label');
+
+          div.setAttribute('class', 'pretty p-icon p-rotate mb-2 d-block');
+          input.setAttribute('type', 'checkbox');
+          input.setAttribute('value', element['data']['nome']);
+          input.setAttribute('visitorId', element['data']['id']);
+          segundaDiv.setAttribute('class', 'state p-success');
+          icone.setAttribute('class', 'icon mdi mdi-check');
+          label.innerText = element['data']['nome'];
+
+          div.appendChild(input);
+          segundaDiv.appendChild(icone);
+          segundaDiv.appendChild(label);
+          div.appendChild(segundaDiv);
+
+          meusVisitantes.appendChild(div);
+        });
+      });
+    }
+
+    const btnConfirmaExclusaoVisita = document.getElementById('confirmaExclusaoVisita');
+    btnConfirmaExclusaoVisita.addEventListener('click', function (e) {
+      e.preventDefault();
+      const idToRemove = document.getElementById('idVisitaRemove').innerHTML;
+      const urlDelecao = 'https://faunadbvillage.herokuapp.com/visita/'.concat(idToRemove);
+
+      const options = {
+        method: 'DELETE'
+      }
+
+      fetch(urlDelecao, options).then(function () {
+        $('#modalExcluirVisita').modal('toggle');
+        renderizarTabelaVisitas();
+      })
+    });
+  </script>
 
   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
   <script src="../js/bootstrap.bundle.min.js"></script>
-  <script src="../js/sideBar.js"></script>
-  <script src="../js/visitas.js"></script>
   <script src="../js/visitantes.js"></script>
 </body>
 
