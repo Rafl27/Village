@@ -99,12 +99,12 @@
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item active">
                 <a class="nav-link" href="#">
-                  <img src="./images/211694_bell_icon.png" id="bell" alt="" srcset="">
+                  <img src="../images/211694_bell_icon.png" id="bell" alt="" srcset="">
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <img src="./images/9004778_menu_list_navigation_options_icon.png" id="options" alt="" srcset="">
+                  <img src="../images/9004778_menu_list_navigation_options_icon.png" id="options" alt="" srcset="">
                 </a>
               </li>
 
@@ -112,7 +112,9 @@
           </div>
         </div>
       </nav>
-
+      <!-- INFO DO USUARIO -->
+      
+      
       <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
           <div class="col-md-3 border-right">
@@ -127,27 +129,22 @@
               </div>
               <div class="row mt-2">
                 <div class="col-md-6"><label class="labels">Nome</label><input type="text" class="form-control"
-                    placeholder="Nome" value=""></div>
+                    placeholder="Nome" id="nomeUsuario" value=""></div>
                 <div class="col-md-6"><label class="labels">Sobrenome</label><input type="text" class="form-control"
-                    value="" placeholder="Sobrenome"></div>
+                    value="" id="sobrenomeUsuario" placeholder="Sobrenome"></div>
               </div>
               <div class="row mt-3">
-                <div class="col-md-12"><label class="labels">Númedo de telefone</label><input type="text"
-                    class="form-control" placeholder="Númedo de telefone" value=""></div>
+                <div class="col-md-12"><label class="labels">Número de telefone</label><input type="text"
+                    class="form-control" placeholder="Númedo de telefone" id="telefoneUsuario" value=""></div>
                 <div class="col-md-12"><label class="labels">E-mail</label><input type="text" class="form-control"
-                    placeholder="E-mail" value=""></div>
-                <!-- <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                            <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                            <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                            <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                            <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
-                            <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div> -->
+                    placeholder="E-mail" id="emailUsuario" value=""></div>
+
               </div>
               <div class="row mt-3">
                 <div class="col-md-6"><label class="labels">Idade</label><input type="text" class="form-control"
                     placeholder="Idade" value=""></div>
-                <div class="col-md-6"><label class="labels">Situação</label><input type="text" class="form-control"
-                    value="" placeholder="Situação"></div>
+                <div class="col-md-6"><label class="labels">Permissão</label><input type="text" id="permissaoUsuario" class="form-control"
+                    value="" placeholder="Permissão"></div>
               </div>
               <div class="mt-5 text-center"><button class="btn btn btn-dark profile-button"
                   type="button">Editar</button></div>
@@ -157,7 +154,7 @@
             <div class="p-3 py-5">
               <div class="d-flex justify-content-between align-items-center experience"><span>Localização</span><span
                   class="border px-3 p-1 add-experience"><i class="fa fa-edit"></i>&nbsp;Editar</span></div><br>
-              <div class="col-md-12"><label class="labels">Rua</label><input type="text" class="form-control"
+              <div class="col-md-12"><label class="labels">Rua</label><input type="text" id="ruaUsuario" class="form-control"
                   placeholder="Rua" value=""></div> <br>
               <div class="col-md-12"><label class="labels">Número</label><input type="text" class="form-control"
                   placeholder="Número" value=""></div>
@@ -171,13 +168,12 @@
   </div>
   </div>
 
-  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
-  <script src="./js/bootstrap.bundle.min.js"></script>
-  <script src="./js/sideBar.js"></script>
-  <script src="./js/profile.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/sideBar.js"></script>
+  <script src="../js/profile.js"></script>
 
 
 </body>
