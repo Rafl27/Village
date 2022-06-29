@@ -5,7 +5,10 @@ var areaReserva = window.location.search.split('=')[1]
 
 var areaTexto = document.getElementById('area');
 areaTexto.innerHTML += areaReserva.substring(4)
-
+var usuarioLogado = localStorage.getItem('loggedUser');
+let nomeUsuario = JSON.parse(usuarioLogado).nome;
+document.getElementById('nome').setAttribute('value',nomeUsuario);
+document.getElementById('')
 function datepicker() {
     const options = {
         method: "GET",
