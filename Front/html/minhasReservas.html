@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/sideBar.css">
+    <link rel="stylesheet" href="../css/minhasReservas.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 
     <title>Village</title>
@@ -107,38 +108,10 @@
                 </div>
             </nav>
 
-            <h2 id="area">Reserva - </h2>
-            <div class="container rounded" class="reservas">
-                <div class="row">
-                    <div class="col">
-                        <input type="text" id="datepicker">
-                    </div>
-                    <div class="col">
-                        <div class="row">
-                            <div class="col">
-                                <div class="row">
-                                    <span>Nome</span>
-                                </div>
-                                <div class="row">
-                                    <input id="nome" type="text">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="row">
-                                    <span>N° de pessoas</span>
-                                </div>
-                                <div class="row">
-                                    <input id="numpessoas" type="number" onload="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <button id="submit">Salvar</button>
-                        </div>
-                    </div>
-                </div>
+            <h2 id="area">Minhas Reservas</h2>
+            <div class="rounded" class="reservas">
+                <ul id="reserva">
+                </ul>
             </div>
         </div>
     </div>
@@ -149,7 +122,7 @@
         crossorigin="anonymous"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/sideBar.js"></script>
-    <script src="../js/reserva.js"></script>
+    <script src="../js/minhasReservas.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

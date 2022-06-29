@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const usuarios = require('../models/usuario');
 const Reserva = require('../models/reserva');
+const e = require('express');
 // const usuario = require('../models/usuario');
 router.use(express.json());
 
@@ -84,19 +85,39 @@ router.post('/reserva', async (req, res) => {
     const reserva = new Reserva({
         data: data.data,
         nome: data.nome,
-        numeroDePessoas: data.numeroDePessoas,
-        email: data.email
+        numeroDePessoas: data.numPessoas,
+        email: data.email,
+        area: data.area
     });
 
-    console.log(reserva)
-    //try {
-    //    const usuarioSalvo = await reserva.save();
-    //    res.json(usuarioSalvo); 
-    //}
-    //catch (err) {
-    //    res.json({ message: err });
-    //    console.log('error!!!' +  err)
-    //}
+    try {
+        const usuarioSalvo = await reserva.save();
+        res.json(usuarioSalvo); 
+    }
+    catch (err) {
+        res.json({ message: err });
+        console.log('error!!!' +  err)
+    }
+})
+
+router.get('/reserva/:area', async (req, res) => {
+    const area = req.params.area;
+    const reservas = await Reserva.find({
+        area: area
+    })
+
+    res.json(reservas.map(r => r.data));
+})
+
+router.get('/reserva/minhas/:email', async (req, res) => {
+    const email = req.params.email;
+    const reservas = await Reserva.find({
+        email: email
+    })
+
+    console.log(reservas)
+
+    res.json(reservas);
 })
 
 module.exports = router;
